@@ -26,7 +26,7 @@ let FONT_FILES = [
 ];
 
 function fontPath(app, name) {
-  return `${app.bowerDirectory  }/materialize/dist/fonts/roboto/${  name}`;
+  return `${app.project.root}/node_modules/materialize-css/dist/fonts/roboto/${name}`;
 }
 
 module.exports = {
@@ -62,7 +62,7 @@ module.exports = {
       trees.push(tree);
     }
 
-    let materializePath = path.join(this.project.root, this.app.bowerDirectory, 'materialize', 'dist', 'js');
+    let materializePath = path.join(this.project.root, 'node_modules', 'materialize', 'dist', 'js');
     if (existsSync(materializePath)) {
       let materializeTree = fastbootTransform(new Funnel(materializePath, {
         files: ['materialize.js'],
