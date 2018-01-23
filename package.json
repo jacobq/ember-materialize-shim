@@ -20,7 +20,7 @@
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.6.0",
-    "ember-cli": "2.18.1",
+    "ember-cli": "^3.0.0-beta.2",
     "ember-cli-dependency-checker": "^2.1.0",
     "ember-cli-eslint": "^4.2.3",
     "ember-cli-fastboot": "^1.1.2",
@@ -37,6 +37,7 @@
     "ember-material-design-icons-shim": "0.1.12",
     "ember-resolver": "^4.5.0",
     "ember-source": "~2.18.0",
+    "ember-source-channel-url": "^1.0.1",
     "ember-sublime": "0.0.9",
     "eslint-plugin-ember": "^5.0.3",
     "eslint-plugin-node": "^5.2.1",
