@@ -8,7 +8,11 @@ module.exports = function() {
     getChannelURL('beta'),
     getChannelURL('canary'),
   ]).then((urls) => {
+    const releaseUrl = urls[0];
+    const betaUrl = urls[1];
+    const canaryUrl = urls[2];
     return {
+      useYarn: true,
       scenarios: [
         {
           name: 'ember-lts-2.12',
@@ -30,7 +34,7 @@ module.exports = function() {
           name: 'ember-release',
           npm: {
             devDependencies: {
-              'ember-source': urls[0]
+              'ember-source': releaseUrl
             }
           }
         },
@@ -38,7 +42,7 @@ module.exports = function() {
           name: 'ember-beta',
           npm: {
             devDependencies: {
-              'ember-source': urls[1]
+              'ember-source': betaUrl
             }
           }
         },
@@ -46,7 +50,7 @@ module.exports = function() {
           name: 'ember-canary',
           npm: {
             devDependencies: {
-              'ember-source': urls[2]
+              'ember-source': canaryUrl
             }
           }
         },
