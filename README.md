@@ -50,7 +50,6 @@ var app = new EmberApp(defaults, {
 
 * `git clone` this repository
 * `npm install`
-* `bower install`
 
 ## Running
 
