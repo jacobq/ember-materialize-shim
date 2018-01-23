@@ -6,7 +6,7 @@ module.exports = function(defaults) {
   let app = new EmberAddon(defaults, {
     sassOptions: {
       includePaths: [
-        'bower_components/materialize/sass'
+        'node_modules/materialize-css/sass'
       ]
     }
   });
