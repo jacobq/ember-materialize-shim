@@ -3,7 +3,7 @@
 
 const path = require('path');
 const Funnel = require('broccoli-funnel');
-const Merge = require('broccoli-merge-trees');
+const mergeTrees = require('broccoli-merge-trees');
 const fastbootTransform = require('fastboot-transform');
 const existsSync = require('exists-sync');
 
@@ -19,12 +19,27 @@ module.exports = {
 
     if (!(app.options['materialize-shim'] || {}).omitJS) {
       app.import('vendor/materialize/materialize.js');
-      app.import('vendor/materialize-shim.js', {
-        exports: {
-          materialize: ['default']
-        }
-      });
     }
+    if (!(app.options['materialize-shim'] || {}).omitRoboto) {
+      app.import('vendor/roboto/roboto-fontface.css', { destDir: 'dummyDir/css' });
+    }
+  },
+
+  treeForPublic: function(tree) {
+    var trees = [];
+
+    const robotoFontPath = path.join(this.project.root, 'node_modules', 'roboto-fontface');
+    trees.push(new Funnel(robotoFontPath, {
+      destDir: 'fonts',
+      srcDir: 'fonts/roboto'
+    }));
+
+
+    if (tree) {
+      trees.push(tree);
+    }
+
+    return mergeTrees(trees, { overwrite: true });
   },
 
   treeForVendor(tree) {
@@ -34,9 +49,18 @@ module.exports = {
       trees.push(tree);
     }
 
-    let materializePath = path.join(this.project.root, 'node_modules', 'materialize-css', 'dist', 'js');
+    const robotoFontPath = path.join(this.project.root, 'node_modules', 'roboto-fontface');
+    if (existsSync(robotoFontPath)) {
+      trees.push(new Funnel(robotoFontPath, {
+        srcDir: 'css/roboto',
+        include: ['**/*'],
+        destDir: 'roboto'
+      }));
+    }
+
+    const materializePath = path.join(this.project.root, 'node_modules', 'materialize-css', 'dist', 'js');
     if (existsSync(materializePath)) {
-      let materializeTree = fastbootTransform(new Funnel(materializePath, {
+      const materializeTree = fastbootTransform(new Funnel(materializePath, {
         files: ['materialize.js'],
         destDir: 'materialize'
       }));
@@ -44,6 +68,6 @@ module.exports = {
       trees.push(materializeTree);
     }
 
-    return new Merge(trees);
+    return mergeTrees(trees);
   }
 };

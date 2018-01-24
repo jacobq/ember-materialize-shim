@@ -7,7 +7,7 @@ module.exports = function(defaults) {
     // Add options here
     sassOptions: {
       includePaths: [
-        'bower_components/materialize/sass'
+        'node_modules/materialize-css/sass'
       ]
     }
   });

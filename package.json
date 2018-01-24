@@ -35,6 +35,8 @@
     "broccoli-funnel": "^2.0.1",
     "broccoli-merge-trees": "^2.0.0",
     "ember-cli-babel": "^6.6.0",
+    "roboto-fontface": "^0.8.0",
+    "ember-material-design-icons-shim": "0.1.12",
     "fastboot-transform": "^0.1.2",
     "materialize-css": "1.0.0-alpha.3"
   },
@@ -56,7 +58,7 @@
     "ember-load-initializers": "^1.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-resolver": "^4.0.0",
-    "ember-source": "~2.12.0",
+    "ember-source": "3.0.0-beta.3",
     "ember-source-channel-url": "^1.0.1",
     "ember-try": "^0.2.23",
     "eslint-plugin-ember": "^5.0.0",

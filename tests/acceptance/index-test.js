@@ -8,6 +8,9 @@ test('Installation verification', function(assert) {
   visit('/');
 
   andThen(function() {
+    console.log('font-family', find('#title'));
+    console.log('font-family', find('#title').css('font-family'));
+    debugger;
     assert.ok(
       find('#title')
         .css('font-family')

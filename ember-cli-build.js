@@ -1,12 +1,15 @@
 'use strict';
 
+const path = require('path');
 const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
 module.exports = function(defaults) {
   let app = new EmberAddon(defaults, {
     sassOptions: {
       includePaths: [
-        'node_modules/materialize-css/sass'
+        'node_modules/materialize-css/sass',
+        // TODO: Roboto should either omitted or handled by a separate module
+        'node_modules/roboto-fontface/css/'
       ]
     }
   });

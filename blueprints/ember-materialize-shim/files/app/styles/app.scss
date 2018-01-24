@@ -1,5 +1,6 @@
-// Fix for Roboto font path
-$roboto-font-path: '../assets/';
-
-// Materialize styles
+$roboto-font-path: '/fonts';
+@import "mixins";
+@include roboto-font('roboto', 'Roboto', 'Regular', 400, normal);
+@include roboto-font('roboto', 'Roboto', 'BlackItalic', 900, italic);
+// ...
 @import "materialize";

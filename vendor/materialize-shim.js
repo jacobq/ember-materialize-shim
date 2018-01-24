@@ -11,6 +11,6 @@ if (typeof FastBoot === 'undefined') {
       });
     }
 
-    generateModule('materialize', { 'default': Materialize });
+    generateModule('materialize', { 'default': M });
   })();
 }
